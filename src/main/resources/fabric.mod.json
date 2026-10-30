@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "invisibleguy",
+  "version": "${version}",
+  "name": "Invisible Guy Mod",
+  "description": "A mod that removes join and leave messages, replaces the name of players killed by invisible entities, and limits the visibility of death and chat messages to a 10-block radius.",
+  "authors": ["EnderDevelopment"],
+  "contact": {
+    "homepage": "https://enderdevelopment.com",
+    "sources": "https://github.com/enderdevelopment/invisibleguy"
+  },
+  "license": "MIT",
+  "icon": "assets/invisibleguy/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.enderdevelopment.InvisibleGuyMod"
+    ]
+  },
+  "mixins": [
+    "invisibleguy.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.0",
+    "fabric-api": "*",
+    "minecraft": "1.20.1"
+  }
+}

@@ -1,0 +1,49 @@
+plugins {
+    id 'fabric-loom' version '1.1-SNAPSHOT'
+    id 'maven-publish'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'Fabric'
+        url = 'https://maven.fabricmc.net/'
+    }
+}
+
+extra {
+    apply plugin: 'fabric-loom'
+    minecraft {
+        version = project.property('minecraft_version')
+        runs {
+            client {
+                property 'fabric.runs.client.main' = 'net.fabricmc.fabric.api.client.ClientModInitializer'
+            }
+            server {
+                property 'fabric.runs.server.main' = 'net.fabricmc.fabric.api.dedicatedserver.DedicatedServerModInitializer'
+            }
+        }
+    }
+}
+
+dependencies {
+    minecraft 'com.mojang:minecraft:${project.property('minecraft_version')}'
+    mappings 'net.fabricmc:yarn:${project.property('minecraft_version')}:v2'
+    modImplementation 'net.fabricmc:fabric-loader:${project.property('loader_version')}'
+    modImplementation 'net.fabricmc.fabric-api:fabric-api:${project.property('minecraft_version')}'
+}
+
+processResources {
+    inputs.property 'version', project.property('mod_version')
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+            artifactId = project.property('archives_base_name')
+            groupId = project.property('maven_group')
+            version = project.property('mod_version')
+        }
+    }
+}

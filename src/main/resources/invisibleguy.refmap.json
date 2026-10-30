@@ -1,0 +1,13 @@
+{
+  "v1": {
+    "mappings": {
+      "net.minecraft.server.players.PlayerList": {
+        "methods": {
+          "broadcastMessage": {
+            "name": "func_232641_a_"
+          }
+        }
+      }
+    }
+  }
+}
